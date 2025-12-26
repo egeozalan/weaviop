@@ -8,10 +8,10 @@
 > **Discover music based on your mood with a Neo-Brutalist design and Retro-Arcade vibes.**
 
 Weaviop is an interactive music discovery engine that helps you find the perfect rhythm to match your current mood. Built with a high-contrast Neo-Brutalist aesthetic and packed with gamified elements, it transforms music searching into an arcade experience.
+<img width="1919" height="910" alt="Screenshot 2025-12-27 000157" src="https://github.com/user-attachments/assets/1f15e853-7541-4981-8ee8-efbbb4c8bc21" />
 
 ## 🚀 [Visit Live Site](https://egeozalan.com/weaviop/)
 
----
 
 ## ✨ Features
 
@@ -27,6 +27,8 @@ Weaviop is an interactive music discovery engine that helps you find the perfect
 - **API:** Powered by iTunes Search API.
 - **Audio:** Web Audio API for custom 8-bit retro sound effects.
 - **Libraries:** [html2canvas](https://html2canvas.hertzen.com/) for capturing and downloading your vibes.
+<img width="1919" height="911" alt="Screenshot 2025-12-27 000221" src="https://github.com/user-attachments/assets/56c38f60-1f56-4e9b-934e-67be2a89b363" />
+<img width="1919" height="911" alt="Screenshot 2025-12-27 000233" src="https://github.com/user-attachments/assets/2ab43898-e2d3-42b0-8b4f-517735cb3062" />
 
 ## 📄 License
 
