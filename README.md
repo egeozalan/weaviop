@@ -9,7 +9,7 @@
 
 Weaviop is an interactive music discovery engine that helps you find the perfect rhythm to match your current mood. Built with a high-contrast Neo-Brutalist aesthetic and packed with gamified elements, it transforms music searching into an arcade experience.
 
-## 🚀 [Visit Live Site](BURAYA_SİTE_LİNKİNİ_YAPIŞTIR)
+## 🚀 [Visit Live Site](https://egeozalan.com/weaviop/)
 
 ---
 
@@ -19,9 +19,7 @@ Weaviop is an interactive music discovery engine that helps you find the perfect
 - 🧬 **Vibe Analysis:** Get a detailed report of your dominant mood based on your liked songs.
 - 🔮 **The Oracle:** Ask the universe for a sign and get a personalized musical fortune.
 - 👾 **Vibe Pet:** Meet your digital companion that reacts, dances, and sleeps according to the music's rhythm.
-- 🎮 **Gamification:** Earn XP, level up your rank, and unlock special achievement badges.
 - 📸 **Social Ready:** Export your liked lists as aesthetic "Vibe Receipts" or Instagram Stories.
-- 📺 **Retro Immersion:** Features a BIOS boot sequence and CRT scanline effects for ultimate nostalgia.
 
 ## 🛠️ Tech Stack
 
