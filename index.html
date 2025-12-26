@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Weaviop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<div id="badgeModal" class="badge-overlay hidden">
+    <div class="badge-card">
+        <div class="badge-icon">🏆</div>
+        <h2>TEBRİKLER!</h2>
+        <p class="badge-desc">Yeni Bir Rozet Kazandın:</p>
+        <h3 id="badgeTitleName" class="badge-name">Müzik Kulağı</h3>
+        <button class="primary-btn badge-btn" onclick="closeBadge()">Harika!</button>
+    </div>
+</div>
+<body>
+<div id="graffiti-layer"></div>
+<div id="vibe-pet" class="pet-container" onclick="petInteraction()">
+    <div class="pet-face">💤</div>
+    <div class="pet-bubble hidden">Müzik çal!</div>
+</div>
+    <main class="app-container">
+        <header>
+            <div class="header-top">
+                <div class="logo glitch-text" data-text="WEAVIOP">🔥 Weavıop</div>
+                <button class="blind-mode-btn" onclick="toggleBlindMode()" title="Gizemli Mod">
+                    <i class="fas fa-mask"></i>
+                </button>
+<button class="mute-btn" onclick="toggleMute()" title="Sesi Aç/Kapa">
+    <i class="fas fa-volume-up"></i>
+</button>
+                <button class="list-btn" onclick="togglePlaylist()">
+                    <i class="fas fa-list"></i>
+                </button>
+            </div>
+            <p class="subtitle">Moduna göre müzik keşfet</p>
+        </header>
+        <section id="step-language" class="card active">
+            <h2>Dil Seç</h2>
+            <div class="lang-grid">
+                <button class="lang-btn" onclick="selectLanguage('tr')">
+                    <span class="flag">🇹🇷</span>
+                    <span class="lang-name">Türkçe</span>
+                </button>
+                <button class="lang-btn" onclick="selectLanguage('en')">
+                    <span class="flag">🌍</span>
+                    <span class="lang-name">Yabancı</span>
+                </button>
+                <button class="lang-btn mix-btn" onclick="selectLanguage('mix')">
+                    <span class="flag">🔀</span>
+                    <span class="lang-name">Karışık (Mix)</span>
+                </button>
+            </div>
+        </section>
+        <section id="step-location" class="card hidden">
+            <h2>Neredesin?</h2>
+            <br>
+            <button class="outline-btn" id="geoBtn">📍 Konumumu Kullan</button>
+            <div class="separator">-veya-</div>
+            <div class="input-wrapper">
+                <input type="text" id="cityInput" placeholder="Şehir (Örn: İstanbul)" autocomplete="off">
+            </div>
+            <button class="primary-btn" id="getWeatherBtn">Hava Durumunu Bul</button>
+            <button class="text-btn" onclick="goBack('step-language')">← Dil Değiştir</button>
+        </section>
+        <section id="step-mood" class="card hidden">
+            <div class="weather-badge">
+                <span id="weatherIcon">☀️</span>
+                <span id="weatherText">Yükleniyor...</span>
+            </div>
+            <h2>Modun nasıl?</h2>
+            <div class="mood-grid">
+                <button class="mood-btn" data-mood="happy">
+                    <span class="emoji">😎</span><span class="label">Keyifli</span>
+                </button>
+                <button class="mood-btn" data-mood="neutral">
+                    <span class="emoji">😐</span><span class="label">Nötr</span>
+                </button>
+                <button class="mood-btn" data-mood="energetic">
+                    <span class="emoji">⚡</span><span class="label">Enerjik</span>
+                </button>
+                <button class="mood-btn" data-mood="sad">
+                    <span class="emoji">🥀</span><span class="label">Duygusal</span>
+                </button>
+            </div>
+            <button class="text-btn" onclick="goBack('step-location')">← Konum Değiştir</button>
+        </section>
+        <section id="step-result" class="hidden">
+            <div class="card-stack" id="cardStack"></div>
+            <div class="controls">
+                <button class="control-btn btn-undo" onclick="undo()">
+                    <i class="fas fa-undo"></i>
+                </button>
+                <button class="control-btn dislike" onclick="manualSwipe('left')">
+                    <i class="fas fa-times"></i>
+                </button>
+                <button class="control-btn like" onclick="manualSwipe('right')">
+                    <i class="fas fa-heart"></i>
+                </button>
+            </div>
+            <br>
+            <button class="text-btn" onclick="resetApp()" style="margin-top:10px; color: #555;">Başa Dön</button>
+        </section>
+    </main>
+    <div id="playlistModal" class="playlist-modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Beğendiklerin 💚</h3>
+                <button onclick="togglePlaylist()" class="close-btn">&times;</button>
+            </div>
+            <div id="likedList" class="liked-list">
+                <p style="color:#888; text-align:center; margin-top:20px;">Henüz bir şey beğenmedin.</p>
+            </div>
+            <button class="export-btn story-btn" onclick="shareAsStory()">
+                <i class="fas fa-camera"></i> Story Olarak İndir
+            </button>
+            <button class="export-btn" onclick="exportList()">
+                <i class="fas fa-copy"></i> Listeyi Kopyala
+            </button>
+            <button class="clear-btn" onclick="clearLikes()">Listeyi Temizle</button>
+        </div>
+    </div>
+    <div id="notification" class="notification">Listeye Eklendi 💚</div>
+    <script src="script.js"></script>
+    <button class="oracle-btn" onclick="openOracle()">
+        <span class="oracle-icon">🔮</span>
+    </button>
+    <div id="oracleModal" class="badge-overlay hidden">
+        <div class="badge-card oracle-card">
+            <div class="oracle-header">✨ Evrenin Mesajı ✨</div>
+            <div id="oracleLoading">
+                <div class="crystal-ball">🔮</div>
+                <p>Frekanslar taranıyor...</p>
+            </div>
+            <div id="oracleResult" class="hidden">
+                <img id="oracleImg" src="" alt="Cover">
+                <h3 id="oracleTitle">Şarkı Adı</h3>
+                <p id="oracleArtist">Sanatçı</p>
+                <br>
+                <div class="fortune-text">
+                    "Cevap bu şarkının nakaratında saklı..."
+                </div>
+                <br>
+                <a id="oracleLink" href="#" target="_blank" class="primary-btn"
+                    style="margin-top:15px; text-decoration:none;">
+                    <i class="fab fa-spotify"></i> Spotify'da Dinle
+                </a>
+            </div>
+            <br>
+            <button class="text-btn" onclick="closeOracle()" style="margin-top:15px; color:#aaa;">Teşekkürler
+                Evren</button>
+        </div>
+    </div>
+<div class="marquee-container">
+    <div class="marquee-content">
+        🔥 WEAVIOP İLE KEŞFET • MODUNU SEÇ MÜZİĞİ YAKALA • 🎵 MÜZİK RUHUN GIDASIDIR • 🕶️ TARZINI YANSIT • 🚀 HER GÜN YENİ BİR RİTİM • 🔥
+    </div>
+</div>
+<div class="crt-overlay"></div>
+<div id="combo-counter" class="hidden">COMBO <span id="combo-num">0</span>x</div>
+<div class="vhs-text">⏪ REWIND</div>
+</body>
+</html>
